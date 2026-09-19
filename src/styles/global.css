@@ -1,0 +1,1093 @@
+:root {
+  --court-green: #14281E;
+  --court-green-light: #1E3B2C;
+  --hardwood: #C9A369;
+  --hardwood-light: #E8D3A3;
+  --ball-orange: #E85D25;
+  --paper: #F7F4EC;
+  --ink: #16201B;
+  --ink-soft: #52645A;
+  --line: #DED6C3;
+  --success: #2D6A4F;
+  --danger: #B3261E;
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(20, 40, 30, 0.10);
+
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0 0 8px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+
+/* =========================================================
+   APP SHELL
+========================================================= */
+
+.app-shell {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+@media (min-width: 540px) {
+  .app-shell {
+    min-height: calc(100vh - 48px);
+    margin-top: 24px;
+    margin-bottom: 24px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .screen {
+    padding-left: clamp(24px, 4vw, 56px);
+    padding-right: clamp(24px, 4vw, 56px);
+  }
+}
+
+@media (min-width: 900px) {
+  .screen {
+    max-width: 980px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .bottom-nav {
+    position: sticky;
+    bottom: 0;
+  }
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 14px;
+  background: var(--court-green);
+  color: #fff;
+}
+
+.top-bar .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.top-bar .brand .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ball-orange);
+}
+
+.lang-picker {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.lang-picker select {
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 12px;
+}
+
+.lang-picker option {
+  color: #16201B;
+  background: #fff;
+}
+
+.top-bar .sub {
+  color: rgba(255,255,255,0.65);
+  font-size: 12.5px;
+  margin-top: 2px;
+}
+
+
+/* =========================================================
+   SCREEN
+========================================================= */
+
+.screen {
+  flex: 1;
+  padding: 18px 20px 90px;
+  overflow-y: auto;
+}
+
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+
+.bottom-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+}
+
+.bottom-nav a,
+.bottom-nav button.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.bottom-nav a.active,
+.bottom-nav button.nav-btn.active {
+  color: var(--court-green);
+  font-weight: 600;
+}
+
+.bottom-nav .icon {
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   COMMON COMPONENTS
+========================================================= */
+
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.card + .card {
+  margin-top: 0;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  font-size: 14.5px;
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    opacity 0.12s ease,
+    background 0.15s ease;
+  width: 100%;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--ball-orange);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: var(--court-green);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--court-green);
+  border: 1.5px solid var(--court-green);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-sm {
+  width: auto;
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   FORMS
+========================================================= */
+
+.field {
+  margin-bottom: 14px;
+}
+
+.field label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--court-green);
+}
+
+.field .hint {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+.field .error {
+  font-size: 11.5px;
+  color: var(--danger);
+  margin-top: 4px;
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.badge-open {
+  background: #E4F1E9;
+  color: var(--success);
+}
+
+.badge-pending {
+  background: #FCEEDB;
+  color: #A15C00;
+}
+
+.badge-approved {
+  background: #E4F1E9;
+  color: var(--success);
+}
+
+.badge-rejected {
+  background: #FBE5E3;
+  color: var(--danger);
+}
+
+.badge-waitlist {
+  background: #EDE7F6;
+  color: #5B3E9C;
+}
+
+.badge-paid {
+  background: #E4F1E9;
+  color: var(--success);
+}
+
+.badge-full {
+  background: #EFEFEF;
+  color: var(--ink-soft);
+}
+
+
+/* =========================================================
+   BANNERS
+========================================================= */
+
+.banner {
+  border-radius: 10px;
+  padding: 10px 13px;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.banner-error {
+  background: #FBE5E3;
+  color: var(--danger);
+}
+
+.banner-success {
+  background: #E4F1E9;
+  color: var(--success);
+}
+
+.banner-info {
+  background: #EFF1EC;
+  color: var(--ink-soft);
+}
+
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.muted {
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--line);
+  margin: 14px 0;
+}
+
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+.auth-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--court-green);
+  padding: 20px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--paper);
+  border-radius: 20px;
+  padding: 28px 26px;
+  box-shadow: var(--shadow);
+}
+
+.court-lines {
+  height: 46px;
+  border: 2px solid var(--hardwood);
+  border-radius: 6px;
+  position: relative;
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+
+.court-lines::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--hardwood);
+}
+
+.court-lines::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--hardwood);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.tabbed-toggle {
+  display: flex;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: 3px;
+  margin-bottom: 18px;
+}
+
+.tabbed-toggle button {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 9px 0;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.tabbed-toggle button.active {
+  background: var(--court-green);
+  color: #fff;
+}
+
+
+/* =========================================================
+   GENERIC QR
+========================================================= */
+
+.qr-box {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 14px;
+  background:
+    repeating-conic-gradient(
+      #16201B 0% 25%,
+      #fff 0% 50%
+    ) 50% / 20px 20px;
+  border: 6px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1.5px var(--line);
+}
+
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--paper);
+}
+
+.admin-side {
+  width: 190px;
+  background: var(--court-green);
+  color: #fff;
+  padding: 20px 14px;
+  flex-shrink: 0;
+}
+
+.admin-side a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 13.5px;
+  margin-bottom: 2px;
+}
+
+.admin-side a.active {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-weight: 600;
+}
+
+.admin-main {
+  flex: 1;
+  padding: 26px 30px;
+  min-width: 0;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th {
+  text-align: left;
+  color: var(--ink-soft);
+  font-weight: 600;
+  padding: 8px 10px;
+  border-bottom: 1.5px solid var(--line);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+td {
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   PAYMENT METHOD SELECTOR
+========================================================= */
+
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.payment-method-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  min-height: 62px;
+
+  padding: 12px 13px;
+
+  border: 1.5px solid var(--line);
+  border-radius: 13px;
+
+  background: #fff;
+  color: var(--ink);
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    transform 0.12s ease,
+    box-shadow 0.18s ease;
+}
+
+.payment-method-btn:hover {
+  border-color: var(--court-green);
+  transform: translateY(-1px);
+}
+
+.payment-method-btn:active {
+  transform: scale(0.98);
+}
+
+.payment-method-btn.active {
+  background: var(--court-green);
+  color: #fff;
+  border-color: var(--court-green);
+  box-shadow: 0 4px 12px rgba(20, 40, 30, 0.15);
+}
+
+.payment-icon {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.paynow-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.payment-method-btn.active .payment-icon {
+  background: rgba(255,255,255,0.14);
+}
+
+.payment-method-btn strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.payment-method-btn small {
+  display: block;
+  margin-top: 3px;
+  font-size: 10.5px;
+  color: var(--ink-soft);
+}
+
+.payment-method-btn.active small {
+  color: rgba(255,255,255,0.7);
+}
+
+.apple-icon {
+  font-size: 20px;
+}
+
+
+/* =========================================================
+   PAYNOW SECTION
+========================================================= */
+
+.paynow-section {
+  margin-top: 14px;
+  padding: 22px 18px;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  background: var(--paper);
+
+  text-align: center;
+
+  animation: paynowAppear 0.2s ease;
+}
+
+.paynow-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  margin-bottom: 18px;
+}
+
+.paynow-info strong {
+  color: var(--ink);
+  font-size: 17px;
+}
+
+.paynow-info span {
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   PAYNOW QR
+========================================================= */
+
+.paynow-qr {
+  width: 200px;
+  height: 200px;
+
+  margin: 0 auto;
+
+  padding: 10px;
+
+  background: #fff;
+
+  border-radius: 13px;
+
+  box-shadow:
+    0 5px 20px rgba(20, 40, 30, 0.08),
+    0 0 0 1px var(--line);
+}
+
+.qr-placeholder {
+  width: 180px;
+  height: 180px;
+
+  display: grid;
+  place-items: center;
+
+  background: #fff;
+}
+
+.qr-pattern {
+  width: 155px;
+  height: 155px;
+
+  position: relative;
+
+  background:
+    repeating-conic-gradient(
+      #111 0% 25%,
+      #fff 0% 50%
+    ) 50% / 18px 18px;
+}
+
+
+/* QR corner markers */
+
+.qr-pattern::before,
+.qr-pattern::after {
+  content: '';
+
+  position: absolute;
+
+  width: 38px;
+  height: 38px;
+
+  border: 7px solid #111;
+
+  background: #fff;
+
+  box-shadow:
+    inset 0 0 0 5px #fff;
+}
+
+.qr-pattern::before {
+  top: 0;
+  left: 0;
+}
+
+.qr-pattern::after {
+  top: 0;
+  right: 0;
+}
+
+.qr-pattern span:first-child {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  width: 38px;
+  height: 38px;
+
+  border: 7px solid #111;
+
+  background: #fff;
+
+  box-shadow:
+    inset 0 0 0 5px #fff;
+}
+
+
+/* =========================================================
+   PAYNOW AMOUNT
+========================================================= */
+
+.paynow-amount {
+  margin-top: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.paynow-amount span {
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.paynow-amount strong {
+  color: var(--court-green);
+  font-size: 17px;
+}
+
+.paynow-hint {
+  margin-top: 8px;
+
+  color: var(--ink-soft);
+
+  font-size: 11.5px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   CARD / APPLE PAY INFO
+========================================================= */
+
+.selected-method-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 14px;
+
+  padding: 20px;
+
+  border-radius: 13px;
+
+  background: var(--paper);
+
+  border: 1px solid var(--line);
+
+  animation: paynowAppear 0.2s ease;
+}
+
+.selected-method-icon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: #fff;
+
+  font-size: 22px;
+
+  box-shadow: 0 1px 4px rgba(20, 40, 30, 0.06);
+}
+
+.selected-method-info strong {
+  font-size: 14px;
+}
+
+.selected-method-info p {
+  margin: 4px 0 0;
+
+  color: var(--ink-soft);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   PAYMENT BUTTON
+========================================================= */
+
+.pay-button {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 15px;
+}
+
+
+/* =========================================================
+   PAYMENT ANIMATION
+========================================================= */
+
+@keyframes paynowAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   MOBILE ADMIN
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .admin-shell {
+    flex-direction: column;
+  }
+
+  .admin-side {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    gap: 4px;
+  }
+
+  .admin-side a {
+    white-space: nowrap;
+    margin-bottom: 0;
+  }
+
+  .admin-main {
+    padding: 18px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .payment-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-method-btn {
+    min-height: 58px;
+  }
+
+  .paynow-qr {
+    width: 190px;
+    height: 190px;
+  }
+
+  .qr-placeholder {
+    width: 170px;
+    height: 170px;
+  }
+
+  .qr-pattern {
+    width: 150px;
+    height: 150px;
+  }
+
+  .selected-method-info {
+    align-items: flex-start;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .screen {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .top-bar {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .auth-card {
+    padding: 22px 18px;
+  }
+
+  .card {
+    padding: 13px;
+  }
+
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .btn-sm {
+    width: auto;
+  }
+
+  .payment-methods {
+    gap: 8px;
+  }
+
+  .paynow-section {
+    padding: 18px 12px;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1100px) {
+
+  body {
+    background: #e9e6dc;
+  }
+
+  .app-shell {
+    min-height: calc(100vh - 32px);
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+}
