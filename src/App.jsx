@@ -3,6 +3,7 @@ import RequireRole from './components/RequireRole';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Courts from './pages/Courts';
@@ -22,6 +23,7 @@ export default function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
 
       <Route path="/" element={<RequireRole role="customer"><Home /></RequireRole>} />
       <Route path="/profile" element={<RequireRole role="customer"><Profile /></RequireRole>} />
