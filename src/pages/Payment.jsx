@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import paynowLogo from '../assets/paynow.jpg';
+import paynowLogo from '../assets/PayNow.jpg';
 import { useParams, Link } from 'react-router-dom';
 import Shell from '../components/Shell';
 import { useAuth } from '../context/AuthContext';
