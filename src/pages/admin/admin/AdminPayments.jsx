@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import AdminShell from '../../components/AdminShell';
-import { db } from '../../utils/storage';
-import { sanitizeText } from '../../utils/security';
+import AdminShell from "../../../components/AdminShell";
+import { db } from "../../../utils/storage";
+import { sanitizeText } from '../../../utils/security';
 
 const STATUSES = ['submitted', 'verified', 'rejected'];
 

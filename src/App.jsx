@@ -11,12 +11,12 @@ import CourtDetail from './pages/CourtDetail';
 import MyBookings from './pages/MyBookings';
 import Payment from './pages/Payment';
 
-import AdminDashboard from './pages/admin/AdminDashboard';
-import AdminCourts from './pages/admin/AdminCourts';
-import AdminSlots from './pages/admin/AdminSlots';
-import AdminBookings from './pages/admin/AdminBookings';
-import AdminPayments from './pages/admin/AdminPayments';
-import AdminReports from './pages/admin/AdminReports';
+import AdminBookings from "./pages/admin/admin/AdminBookings";
+import AdminCourts from "./pages/admin/admin/AdminCourts";
+import AdminDashboard from "./pages/admin/admin/AdminDashboard";
+import AdminPayments from "./pages/admin/admin/AdminPayments";
+import AdminReports from "./pages/admin/admin/AdminReports";
+import AdminSlots from "./pages/admin/admin/AdminSlots";
 
 export default function App() {
   return (

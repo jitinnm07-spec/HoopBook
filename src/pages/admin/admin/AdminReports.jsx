@@ -1,5 +1,5 @@
-import AdminShell from '../../components/AdminShell';
-import { db } from '../../utils/storage';
+import AdminShell from "../../../components/AdminShell";
+import { db } from "../../../utils/storage";
 
 export default function AdminReports() {
   const requests = db.allRequests();

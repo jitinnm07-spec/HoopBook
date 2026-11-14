@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import AdminShell from '../../components/AdminShell';
-import { db } from '../../utils/storage';
+import AdminShell from "../../../components/AdminShell";
+import { db } from "../../../utils/storage";
 
 const STATUSES = ['pending', 'waitlisted', 'approved', 'rejected'];
 

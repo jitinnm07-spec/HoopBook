@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import AdminShell from '../../components/AdminShell';
-import { db } from '../../utils/storage';
-import { sanitizeText } from '../../utils/security';
+import AdminShell from "../../../components/AdminShell";
+import { db } from "../../../utils/storage";
+import { sanitizeText } from '../../../utils/security';
 
 const AGE_GROUPS = ['U8', 'U12', 'U16', 'Adult'];
 
